@@ -1,5 +1,5 @@
 # Maven
-target/
+**/target/
 
 # macOS
 .DS_Store
@@ -11,5 +11,5 @@ target/
 .idea/
 *.iml
 
-# Logs
-*.log
+# Services (temporarily ignore)
+microservices/services/

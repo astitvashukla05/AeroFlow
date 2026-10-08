@@ -12,7 +12,7 @@ public interface CityService {
 
     CityResponse getCityById(Long id);
 
-    CityResponse updateCity(Long id);
+    CityResponse updateCity(Long id, CityRequest request);
 
     void deleteCity(Long id);
 
@@ -24,5 +24,4 @@ public interface CityService {
 
     boolean cityExists(String cityCode);
 
-    boolean validateCityCode(String cityCode);
 }

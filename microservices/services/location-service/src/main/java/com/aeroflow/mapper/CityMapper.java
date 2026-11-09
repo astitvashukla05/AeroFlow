@@ -14,7 +14,7 @@ public class CityMapper {
                 .countryCode(request.getCountryCode())
                 .countryName(request.getCountryName())
                 .regionCode(request.getRegionCode())
-                .timeZoneId(request.getTimeZoneOffset())
+                .timeZone(request.getTimeZoneOffset())
                 .build();
 
     }
@@ -28,6 +28,8 @@ public class CityMapper {
                 .countryCode(city.getCountryCode())
                 .countryName(city.getCountryName())
                 .regionCode(city.getRegionCode())
+                .id(city.getId())
+                .timeZoneOffset(city.getTimeZone())
                 .build();
     }
 

@@ -38,7 +38,7 @@ public class City {
     @Size(max = 10)
     private String regionCode;
 
-    @Column(name = "time_zone_id", length = 50)
-    private String timeZoneId;
+    @Column(name = "time_zone", length = 50)
+    private String timeZone;
 
 }

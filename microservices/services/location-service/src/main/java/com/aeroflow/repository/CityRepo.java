@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.aeroflow.model.City;
@@ -18,12 +19,14 @@ public interface CityRepo extends JpaRepository<City, Long> {
     Page<City> findByCountryCodeIgnoreCase(String countryCode, Pageable pageable);
 
     @Query("""
-            Select c from city c
-            where lower(c.name) like lower(concat('%',':keyword,'%'))
-            or lower(c.cityCode) like lower(concat('%',':keyword,'%'))
-            or lower(c.countryCode) like lower(concat('%',':keyword,'%'))
-            or lower(c.countryName) like lower(concat('%',':keyword,'%'))
-            or lower(c.RegionCode) like lower(concat('%',':keyword,'%'))
+            SELECT c FROM City c
+            WHERE LOWER(c.name) LIKE LOWER(CONCAT('%', :keyword, '%'))
+               OR LOWER(c.cityCode) LIKE LOWER(CONCAT('%', :keyword, '%'))
+               OR LOWER(c.countryCode) LIKE LOWER(CONCAT('%', :keyword, '%'))
+               OR LOWER(c.countryName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+               OR LOWER(c.regionCode) LIKE LOWER(CONCAT('%', :keyword, '%'))
             """)
-    Page<City> searchByKeyword(String Keyword, Pageable pageable);
+    Page<City> searchByKeyword(
+            @Param("keyword") String keyword,
+            Pageable pageable);
 }
